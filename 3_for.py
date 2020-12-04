@@ -9,13 +9,24 @@
 * Посчитать и вывести средний балл по всей школе.
 * Посчитать и вывести средний балл по каждому классу.
 """
+total_scores = [
+    {'school_class': '4a', 'scores': [3,4,4,5,2]},
+    {'school_class': '5б', 'scores': [2,2,5,5,3]},
+    {'school_class': '7б', 'scores': [4,4,3,5,5]},
+    {'school_class': '9а', 'scores': [3,3,5,5,4]},
+]
 
-def main():
-    """
-    Эта функция вызывается автоматически при запуске скрипта в консоли
-    В ней надо заменить pass на ваш код
-    """
-    pass
-    
-if __name__ == "__main__":
-    main()
+for clas in total_scores:
+  clas['avr_score'] = sum(clas['scores']) / len(clas['scores'])
+  print(clas)
+  
+score_sum = 0
+for clas in total_scores:
+  score_sum += clas['avr_score']
+
+print(f'Средний балл по всей школе: {score_sum / len(total_scores)}')
+
+for clas in total_scores:
+  clas_no = clas['school_class']
+  avr_score = clas['avr_score']
+  print(f'Средний балл по классу {clas_no}: {avr_score}')
